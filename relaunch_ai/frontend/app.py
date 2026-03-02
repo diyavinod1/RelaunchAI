@@ -19,7 +19,7 @@ st.set_page_config(
 )
 
 # API Configuration
-API_BASE_URL = "http://localhost:8000"
+API_BASE_URL = "https://relaunchai-backend-vk4r.onrender.com"
 
 # ============================================
 # PREMIUM CSS WITH ANIMATIONS & EFFECTS
