@@ -24,10 +24,16 @@ API_BASE_URL = "https://relaunchai-backend-vk4r.onrender.com"
 # ============================================
 # PREMIUM CSS WITH ANIMATIONS & EFFECTS
 # ============================================
+
+# Inject Google Fonts via link tag (more reliable than @import)
+st.markdown("""
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+""", unsafe_allow_html=True)
+
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
-    
     /* ===== ROOT VARIABLES ===== */
     :root {
         --primary: #6366f1;
@@ -46,7 +52,7 @@ st.markdown("""
     /* ===== GLOBAL STYLES ===== */
     .stApp {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
-        font-family: 'Inter', sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     
     /* ===== PARTICLE BACKGROUND ===== */
@@ -159,17 +165,18 @@ st.markdown("""
         50% { box-shadow: 0 0 20px 5px rgba(99, 102, 241, 0.2); }
     }
     
-.hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 1rem;
-    animation: title-glow 3s infinite ease-in-out;
-    position: relative;
-    z-index: 100;
-    text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
-}
+    .hero-title {
+        font-family: 'Playfair Display', Georgia, 'Times New Roman', serif !important;
+        font-size: 4rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 1rem;
+        animation: title-glow 3s infinite ease-in-out;
+        position: relative;
+        z-index: 100;
+        text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        letter-spacing: -0.02em;
+    }
     
     @keyframes title-glow {
         0%, 100% { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3)); }
@@ -812,24 +819,24 @@ def render_input_form():
         
         with col1:
             st.markdown('<label class="form-label">Full Name *</label>', unsafe_allow_html=True)
-            name = st.text_input("", placeholder="e.g., Sarah Johnson", label_visibility="collapsed")
+            name = st.text_input("", placeholder="e.g., Sarah Johnson", label_visibility="collapsed", key="name_input")
             
             st.markdown('<label class="form-label">Education *</label>', unsafe_allow_html=True)
-            education = st.text_input("", placeholder="e.g., MBA, Computer Science", label_visibility="collapsed")
+            education = st.text_input("", placeholder="e.g., MBA, Computer Science", label_visibility="collapsed", key="edu_input")
             
             st.markdown('<label class="form-label">Previous Job Role *</label>', unsafe_allow_html=True)
-            previous_role = st.text_input("", placeholder="e.g., Marketing Manager", label_visibility="collapsed")
+            previous_role = st.text_input("", placeholder="e.g., Marketing Manager", label_visibility="collapsed", key="role_input")
             
             st.markdown('<label class="form-label">Years of Experience *</label>', unsafe_allow_html=True)
-            years_experience = st.number_input("", min_value=0, max_value=50, value=5, label_visibility="collapsed")
+            years_experience = st.number_input("", min_value=0, max_value=50, value=5, label_visibility="collapsed", key="exp_input")
         
         with col2:
             st.markdown('<label class="form-label">Career Break (months) *</label>', unsafe_allow_html=True)
-            break_duration = st.number_input("break_months", min_value=1, max_value=240, value=24, label_visibility="collapsed")
+            break_duration = st.number_input("", min_value=1, max_value=240, value=24, label_visibility="collapsed", key="break_input")
             
             st.markdown('<label class="form-label">Reason for Break *</label>', unsafe_allow_html=True)
             break_reason = st.selectbox(
-                "break_reason",
+                "",
                 options=[
                     ("maternity", "Maternity Leave"),
                     ("childcare", "Childcare / Family Care"),
@@ -841,11 +848,12 @@ def render_input_form():
                     ("other", "Other")
                 ],
                 format_func=lambda x: x[1],
-                label_visibility="collapsed"
+                label_visibility="collapsed",
+                key="reason_input"
             )
             
             st.markdown('<label class="form-label">Additional Details</label>', unsafe_allow_html=True)
-            break_details = st.text_area("", placeholder="Any context about your break...", max_chars=500, label_visibility="collapsed")
+            break_details = st.text_area("", placeholder="Any context about your break...", max_chars=500, label_visibility="collapsed", key="details_input")
         
         st.markdown("---")
         
@@ -853,17 +861,17 @@ def render_input_form():
         
         with col3:
             st.markdown('<label class="form-label">Your Skills (comma-separated) *</label>', unsafe_allow_html=True)
-            skills_input = st.text_area("skills", placeholder="e.g., Project Management, Data Analysis, Python, Team Leadership", height=100, label_visibility="collapsed")
+            skills_input = st.text_area("", placeholder="e.g., Project Management, Data Analysis, Python, Team Leadership", height=100, label_visibility="collapsed", key="skills_input")
         
         with col4:
             st.markdown('<label class="form-label">Target Role *</label>', unsafe_allow_html=True)
-            target_role = st.text_input("target", placeholder="e.g., Product Manager", label_visibility="collapsed")
+            target_role = st.text_input("", placeholder="e.g., Product Manager", label_visibility="collapsed", key="target_input")
             
             st.markdown('<label class="form-label">Target Industry</label>', unsafe_allow_html=True)
-            industry = st.text_input("industry", placeholder="e.g., Technology", label_visibility="collapsed")
+            industry = st.text_input("", placeholder="e.g., Technology", label_visibility="collapsed", key="industry_input")
             
             st.markdown('<label class="form-label">Your Location</label>', unsafe_allow_html=True)
-            location = st.text_input("location", placeholder="e.g., New York, NY", label_visibility="collapsed")
+            location = st.text_input("", placeholder="e.g., New York, NY", label_visibility="collapsed", key="location_input")
     
     skills = [s.strip() for s in skills_input.split(",") if s.strip()] if skills_input else []
     
@@ -873,7 +881,7 @@ def render_input_form():
         "previous_role": previous_role,
         "years_experience": years_experience,
         "break_duration_months": break_duration,
-        "break_reason": break_reason[0],
+        "break_reason": break_reason[0] if isinstance(break_reason, tuple) else break_reason,
         "break_reason_details": break_details if break_details else None,
         "skills_known": skills,
         "target_role": target_role,
