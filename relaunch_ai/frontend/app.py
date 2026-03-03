@@ -161,7 +161,7 @@ st.markdown("""
     
 .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: 4rem;
+    font-size: clamp(3rem, 6vw, 4.5rem);
     font-weight: 700;
     color: #fff;
     margin-bottom: 1rem;
