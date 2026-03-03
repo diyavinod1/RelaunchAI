@@ -18,6 +18,13 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+st.markdown(
+    """
+    <meta name="google-site-verification" content="8h8rVLWJFfDK_RM_GE_xAR-M8uIWzoFQFbrwYxGrF68" />
+    """,
+    unsafe_allow_html=True
+)
+
 # API Configuration
 API_BASE_URL = "https://relaunchai-backend-vk4r.onrender.com"
 
