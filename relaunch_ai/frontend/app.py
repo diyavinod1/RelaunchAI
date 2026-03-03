@@ -138,12 +138,16 @@ st.markdown("""
     
     /* ===== HERO SECTION ===== */
     .hero-container {
-        text-align: center;
+        text-align: center !important;
         padding: 4rem 2rem;
         position: relative;
         z-index: 1;
         max-width: 1000px;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     
     .hero-badge {
@@ -167,15 +171,19 @@ st.markdown("""
     
     .hero-title {
         font-family: 'Playfair Display', Georgia, 'Times New Roman', serif !important;
-        font-size: 4rem;
-        font-weight: 700;
-        color: #fff;
-        margin-bottom: 1rem;
+        font-size: 5rem !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        margin: 0 auto 1rem auto !important;
+        text-align: center !important;
         animation: title-glow 3s infinite ease-in-out;
         position: relative;
         z-index: 100;
         text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
         letter-spacing: -0.02em;
+        line-height: 1.1;
+        width: 100%;
+        display: block;
     }
     
     @keyframes title-glow {
@@ -187,8 +195,9 @@ st.markdown("""
         font-size: 1.25rem;
         color: #94a3b8;
         max-width: 600px;
-        margin: 0 auto 2rem;
+        margin: 0 auto 2rem auto;
         line-height: 1.7;
+        text-align: center;
     }
     
     .hero-features {
@@ -197,6 +206,7 @@ st.markdown("""
         gap: 2rem;
         flex-wrap: wrap;
         margin-top: 2rem;
+        width: 100%;
     }
     
     .hero-feature {
@@ -640,6 +650,20 @@ st.markdown("""
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.1); }
     }
+    
+    /* ===== STREAMLIT OVERRIDE FOR CENTERING ===== */
+    .block-container {
+        max-width: 1000px !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    /* Ensure all hero content is centered */
+    div[data-testid="stVerticalBlock"] > div:has(> .hero-container) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -729,30 +753,35 @@ def render_stepper(current_step, total_steps=5):
 # ============================================
 def render_hero():
     """Render premium landing page hero."""
-    hero_html = '''
-    <div class="hero-container">
-        <div class="hero-badge">
-            <span>✨</span> AI-Powered Career Reintegration
+    # Use a container with explicit centering
+    with st.container():
+        # Add extra HTML wrapper for guaranteed centering
+        hero_html = '''
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%;">
+            <div class="hero-container" style="margin: 0 auto; text-align: center;">
+                <div class="hero-badge" style="margin: 0 auto 1.5rem auto;">
+                    <span>✨</span> AI-Powered Career Reintegration
+                </div>
+                <h1 class="hero-title" style="text-align: center; margin-left: auto; margin-right: auto;">ReLaunchAI</h1>
+                <p class="hero-subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">
+                    Your intelligent companion for confidently returning to the workforce. 
+                    We analyze, guide, and empower your career comeback journey.
+                </p>
+                <div class="hero-features" style="justify-content: center;">
+                    <div class="hero-feature">
+                        <span>🎯</span> Personalized Analysis
+                    </div>
+                    <div class="hero-feature">
+                        <span>⚡</span> Instant Insights
+                    </div>
+                    <div class="hero-feature">
+                        <span>🔒</span> Private & Secure
+                    </div>
+                </div>
+            </div>
         </div>
-        <h1 class="hero-title">ReLaunchAI</h1>
-        <p class="hero-subtitle">
-            Your intelligent companion for confidently returning to the workforce. 
-            We analyze, guide, and empower your career comeback journey.
-        </p>
-        <div class="hero-features">
-            <div class="hero-feature">
-                <span>🎯</span> Personalized Analysis
-            </div>
-            <div class="hero-feature">
-                <span>⚡</span> Instant Insights
-            </div>
-            <div class="hero-feature">
-                <span>🔒</span> Private & Secure
-            </div>
-        </div>
-    </div>
-    '''
-    st.markdown(hero_html, unsafe_allow_html=True)
+        '''
+        st.markdown(hero_html, unsafe_allow_html=True)
 
 # ============================================
 # SIDEBAR
