@@ -136,6 +136,8 @@ st.markdown("""
         padding: 4rem 2rem;
         position: relative;
         z-index: 1;
+        max-width: 1000px;
+        margin: 0 auto;
     }
     
     .hero-badge {
