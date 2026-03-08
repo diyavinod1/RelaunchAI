@@ -11,6 +11,15 @@ from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from fastapi.responses import PlainTextResponse
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/robots.txt", response_class=PlainTextResponse)
+def robots():
+    return "User-agent: *\nAllow: /"
+
 from backend.models import (
     UserProfile, 
     AgentResponse, 
