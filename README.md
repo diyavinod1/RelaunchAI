@@ -1,13 +1,16 @@
-# 🚀 ReLaunchAI - Career Reintegration Assistant
+# 🚀 ReLaunchAI - Career Reintegration Assistant   
 
-An AI-powered assistant designed to help women confidently return to the workforce after career breaks. Built with **SambaNova AI** for fast, efficient inference.
+### _💼 Because career breaks ≠ career ends_     
 
-![ReLaunchAI](https://img.shields.io/badge/Powered%20by-SambaNova-6366f1)
-![Python](https://img.shields.io/badge/Python-3.9+-3776ab)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.30-ff4b4b)
+🌐 Live App: https://relaunchai.streamlit.app/
 
-## ✨ Features
+## 💡 What is this?
+ReLaunchAI is an AI-powered career comeback co-pilot built to help women re-enter the workforce with confidence, clarity, and a solid plan.
+
+Because let’s be real —     
+Career gaps shouldn’t feel like game over. They’re just a pause screen 🎮
+
+## 🧠 What it actually does (aka why this is cool)
 
 - **📊 Skill Gap Analysis** - Identify transferable skills and development priorities
 - **📝 Resume Summary Generator** - Create compelling professional summaries
@@ -125,7 +128,7 @@ streamlit run frontend/app.py
 
 The frontend will open in your browser at `http://localhost:8501`
 
-## 📝 Usage
+## 🧪 How to Use
 
 1. Open the Streamlit app in your browser
 2. Fill in your profile details:
@@ -138,38 +141,6 @@ The frontend will open in your browser at `http://localhost:8501`
 5. Enjoy the confetti celebration!
 6. Review your personalized recommendations across all tabs
 
-## 🔌 API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/` | GET | Health check |
-| `/health` | GET | API health status |
-| `/api/analyze` | POST | Complete analysis pipeline |
-| `/api/skill-gap` | POST | Skill gap analysis only |
-| `/api/resume` | POST | Resume summary only |
-| `/api/interview` | POST | Interview prep only |
-| `/api/roadmap` | POST | 30-day roadmap only |
-| `/api/returnships` | POST | Returnship programs only |
-
-### Example API Request
-
-```bash
-curl -X POST "http://localhost:8000/api/analyze" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Jane Doe",
-    "education": "Bachelor of Science in Computer Science",
-    "previous_role": "Software Engineer",
-    "years_experience": 5,
-    "break_duration_months": 24,
-    "break_reason": "childcare",
-    "skills_known": ["Python", "Java", "SQL", "Agile"],
-    "target_role": "Senior Software Engineer",
-    "industry": "Technology",
-    "location": "San Francisco, CA"
-  }'
-```
-
 ## ⚙️ Environment Variables
 
 | Variable | Description | Default |
@@ -179,19 +150,6 @@ curl -X POST "http://localhost:8000/api/analyze" \
 | `SAMBANOVA_BASE_URL` | API base URL | https://api.sambanova.ai/v1 |
 | `APP_NAME` | Application name | ReLaunchAI |
 | `DEBUG` | Debug mode | false |
-
-## 🎨 UI Animation Features
-
-| Feature | Description |
-|---------|-------------|
-| **Particle Background** | Floating animated particles |
-| **3D Floating Shapes** | Gradient orbs with smooth animation |
-| **Stepper Animation** | Progress tracker with pulse effects |
-| **Glass Morphism** | Translucent cards with blur effects |
-| **Shimmer Effect** | Light sweep animation on cards |
-| **Confetti Burst** | Celebration animation on success |
-| **Button Micro-interactions** | Ripple and scale effects |
-| **Fade-in Animations** | Smooth content transitions |
 
 ## 🐛 Troubleshooting
 
@@ -234,12 +192,23 @@ SAMBANOVA_MODEL=Meta-Llama-3.1-70B-Instruct
 
 MIT License - Feel free to use and modify for your needs.
 
-## 💝 Support
+## 🔥 Why this matters
 
-For issues or questions, please open an issue in the project repository.
+This isn’t just a project.    
+It’s solving a real problem — helping women restart careers with confidence.
+
+## ⭐ Final Note
+
+If you made it this far…
+
+👉 Drop a star ⭐ on the repo    
+👉 Share it with someone who needs it     
+👉 Or just appreciate the UI (valid)
 
 ---
 
-**Built with ❤️ for empowering career returns**
+## 🎯 Built with intent
 
-Powered by [SambaNova Systems](https://sambanova.ai/)
+For women restarting.  
+For confidence rebuilding.   
+For careers relaunching. 🚀
